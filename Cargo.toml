@@ -1,0 +1,53 @@
+[package]
+name = "apple-music-discord-rpc"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A Rust application that integrates Apple Music with Discord Rich Presence"
+readme = "README.md"
+repository = "https://github.com/yourusername/apple-music-discord-rs"
+license = "MIT"
+keywords = ["apple-music", "discord", "rich-presence", "macos"]
+categories = ["multimedia", "api-bindings"]
+
+[dependencies]
+discord-presence = { version = "1.3", features = ["activity_type"] }
+ctrlc = "3.2"
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+url = "2.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+backoff = "0.4"
+objc2 = { version = "0.5.2", features = ["unstable-autoreleasesafe"] }
+objc2-foundation = { version = "0.2.2", features = ["all"] }
+objc2-media-player = { version = "0.2.2", features = ["all"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[package.metadata.bundle]
+name = "Apple Music Discord RPC"
+identifier = "com.yourdomain.apple-music-discord-rs"
+icon = ["32x32.png", "128x128.png", "128x128@2x.png"]
+version = "0.1.0"
+resources = ["resources", "assets"]
+copyright = "Copyright (c) 2023 Your Name. All rights reserved."
+category = "public.app-category.music"
+short_description = "Integrates Apple Music with Discord Rich Presence"
+long_description = """
+Apple Music Discord RPC is a Rust application that integrates
+Apple Music with Discord Rich Presence, allowing you to share
+your currently playing track on Discord.
+"""
+osx_minimum_system_version = "10.13"
+
+# [package.metadata.bundle.macos]
+# entitlements = "entitlements.plist"
+
+# https://github.com/madsmtm/objc2/issues/645
+[profile.dev.package.objc2]
+debug-assertions = false
