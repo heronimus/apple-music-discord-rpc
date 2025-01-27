@@ -5,7 +5,7 @@ Written in Rust with Objective-C Apple Framework binding -- without osascript po
 ### Under Development
 
 TODO:
- - pause/resume/stopped handling (playbackstate)
+ - nonactive/play/paused handling (MPMusicPlaybackState(0,1,2))
  - Use Key-Value-Observing https://developer.apple.com/documentation/swift/using-key-value-observing-in-swift
  - loop vs while?
  - Classical music not registered (check for different mediaitem type)
